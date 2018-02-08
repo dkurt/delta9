@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <script async src="https://docs.opencv.org/master/opencv.js" type="text/javascript"></script>
+  <script src="https://docs.opencv.org/master/utils.js" type="text/javascript"></script>
+  <script src="scene_attributes.js" type="text/javascript"></script>
+  <script src="places_labels.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    var net;
+    function main() {
+      var utils = new Utils('');
+      utils.createFileFromUrl('places205_alexnet.prototxt', 'places205_alexnet.prototxt', () => {
+        utils.createFileFromUrl('places205_alexnet.caffemodel', 'places205_alexnet.caffemodel', () => {
+          net = cv.readNetFromCaffe('places205_alexnet.prototxt', 'places205_alexnet.caffemodel');
+          document.getElementById('runButton').disabled = false;
+          document.getElementById('fileInput').disabled = false;
+        });
+      });
+
+      utils.addFileInputHandler('fileInput', 'canvasInput');
+
+      document.getElementById('runButton').onclick = () => {
+        var img = cv.imread('canvasInput');
+        var imgBGR = new cv.Mat();
+        cv.cvtColor(img, imgBGR, cv.COLOR_RGBA2BGR);
+        var mean = [104.929729064, 113.254710686, 116.209692099, 0];
+        var blob = cv.blobFromImage(imgBGR, 1, {width: 227, height: 227}, mean, false, false);
+
+        net.setInput(blob);
+
+        var out = net.forward();
+
+        function sortPredictions(output, labels, top = 5) {
+          var map = output.data32F.reduce(function(map, value, idx) {
+            map.push({ label: labels[idx], conf: value });
+            return map;
+          }, []);
+
+          map.sort(function(a, b) {
+            return b.conf - a.conf;
+          });
+
+          return map.slice(0, top);
+        }
+
+        var scene = sortPredictions(out.colRange(0, 205), placesLabels);
+        var attrs = sortPredictions(out.colRange(205, 307), sceneAttributes);
+
+        document.getElementById('attributes').innerHTML = attrs.reduce(function(text, pred) {
+          return text + '<br>' + pred.label;
+        }, '');
+
+        document.getElementById('scene').innerHTML = scene.reduce(function(text, pred) {
+          return text + '<br>' + pred.conf.toFixed(2) + ' ' + pred.label;
+        }, '');
+
+        out.delete(); blob.delete(); imgBGR.delete(); img.delete();
+      }
+    }
+  </script>
+</head>
+
+<body onload=main()>
+  <input type="file" id="fileInput" name="file" accept="image/*" disabled="true"></input>
+  <button id="runButton" type="button" disabled="true">Run</button>
+
+  <br>
+
+  <table border="1">
+  <tr>
+      <td>
+        <b>Attributes</b>
+      </td>
+      <td>
+        <b>Scene</b>
+      </td>
+  </tr>
+  <tr>
+      <td>
+        <pre id="attributes"></pre>
+      </td>
+      <td>
+        <pre id="scene"></pre>
+      </td>
+  </tr>
+  </table>
+
+  <canvas id="canvasInput" width=640 height=480 style="max-width: 100%"></canvas>
+</body>
+
+</html>

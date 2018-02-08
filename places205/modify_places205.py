@@ -9,7 +9,7 @@ import numpy as np
 attr = scipy.io.loadmat('sceneattributepredictor/sceneAttributeModel205.mat')
 
 # Load Caffe model
-net = caffe.Net('placesCNN_upgraded/places205CNN_deploy_upgraded.prototxt',
+net = caffe.Net('places205_alexnet.prototxt',
                 'placesCNN_upgraded/places205CNN_iter_300000_upgraded.caffemodel',
                 caffe.TEST)
 

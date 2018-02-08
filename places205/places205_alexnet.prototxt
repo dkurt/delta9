@@ -316,3 +316,13 @@ layers {
     bias_term: false
   }
 }
+layers {
+  name: "output"
+  type: CONCAT
+  bottom: "prob"
+  bottom: "fc9"
+  top: "output"
+  concat_param {
+    axis: -1
+  }
+}
