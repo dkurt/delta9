@@ -79,7 +79,7 @@ or clone it using `git`:
 
 * Download files
   1. [Pose estimation .caffemodel](http://posefs1.perception.cs.cmu.edu/OpenPose/models/pose/mpi/pose_iter_160000.caffemodel)
-  2. [Pose estimation .prototxt](https://github.com/dkurt/opencv_extra/blob/e8fca320b6fbea834a7c51fa765d010fb4cef5be/testdata/dnn/openpose_pose_mpi.prototxt)
+  2. [Pose estimation .prototxt](https://github.com/opencv/opencv_extra/blob/master/testdata/dnn/openpose_pose_mpi.prototxt)
 
 #### DL on smartphone
 Recognize gender and age by face.

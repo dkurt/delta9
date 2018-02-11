@@ -1,5 +1,5 @@
 var placesLabels = [
-"Монастырь (abbey)",
+"Собор (abbey)",
 "Аэропорт (airport_terminal)",
 "Аллея (alley)",
 "Амфитеатр (amphitheater)",
