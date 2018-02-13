@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.delta8.testproject">  <!-- Replace to an appropriate package-->
+          package="org.delta9.testproject">  <!-- TODO: Replace to an appropriate package-->
 
     <application
         android:allowBackup="true"

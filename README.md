@@ -82,7 +82,7 @@ or clone it using `git`:
   2. [Pose estimation .prototxt](https://github.com/opencv/opencv_extra/blob/master/testdata/dnn/openpose_pose_mpi.prototxt)
 
 #### DL on smartphone
-Recognize gender and age by face.
+Recognize gender and age by face. This sample is based on [Age- Gender- recognition networks](https://github.com/GilLevi/AgeGenderDeepLearning)
 
 * Download and install Android Studio
 
@@ -98,11 +98,18 @@ Recognize gender and age by face.
 
 * Check camera permissions by running an application from https://github.com/dkurt/delta9/blob/master/android (replace `activity_main.xml`, `AndroidManifest.xml` and `MainActivity.java` files). In case of problems get camera permissions manually from application's settings.
 
+* NOTE: Do not forget to replace an example package name from `org.delta9.testproject`
+to one chosen during project creation. There is one entry in each file.
+
+  ![](images/opencv4android_package.png)
+
 * Download files
-  1. [Face detection .caffemodel](https://github.com/opencv/opencv_3rdparty/raw/dnn_samples_face_detector_20170830/res10_300x300_ssd_iter_140000.caffemodel)
+  1. [Face detection .caffemodel](https://github.com/opencv/opencv_3rdparty/raw/19512576c112aa2c7b6328cb0e8d589a4a90a26d/res10_300x300_ssd_iter_140000_fp16.caffemodel)
   1. [Face detection .prototxt](https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy.prototxt)
-  1. [Age/gender classificaton .caffemodel]()
-  1. [Age/gender classificaton .prototxt]()
+  1. [AgeNet .caffemodel](https://github.com/GilLevi/AgeGenderDeepLearning/raw/master/models/age_net.caffemodel)
+  1. [AgeNet .prototxt](https://github.com/GilLevi/AgeGenderDeepLearning/blob/master/age_net_definitions/deploy.prototxt)
+  1. [GenderNet .caffemodel](https://github.com/GilLevi/AgeGenderDeepLearning/raw/master/models/gender_net.caffemodel)
+  1. [GenderNet .prototxt](https://github.com/GilLevi/AgeGenderDeepLearning/blob/master/gender_net_definitions/deploy.prototxt)
 
 #### DL in browser
 
@@ -119,4 +126,5 @@ scene recognition.
 
 * star OpenPose project: https://github.com/CMU-Perceptual-Computing-Lab/openpose
 * star Places365 project: https://github.com/CSAILVision/places365
+* star AgeGenderDeepLearning project: https://github.com/GilLevi/AgeGenderDeepLearning
 * star OpenCV project: https://github.com/opencv/opencv

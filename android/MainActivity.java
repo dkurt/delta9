@@ -1,4 +1,4 @@
-package org.delta9.testproject;
+package org.delta9.testproject;  // TODO: Replace to an appropriate package.
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
