@@ -5,6 +5,8 @@ Join chat for any kind questions: [![Join the chat at https://gitter.im/intel_de
 ## Image processing language Halide
 **Date**: February, 28. 18:00 - 19:20 MSK
 
+Look at https://github.com/dkurt/delta9/tree/master/imgproc.
+
 ## Deep learning with OpenCV on PC, smartphone, in browser
 **Date**: February, 28. 19:40 - 21:00 MSK
 
@@ -82,7 +84,7 @@ or clone it using `git`:
   2. [Pose estimation .prototxt](https://github.com/opencv/opencv_extra/blob/master/testdata/dnn/openpose_pose_mpi.prototxt)
 
 #### DL on smartphone
-Recognize gender and age by face. This sample is based on [Age- Gender- recognition networks](https://github.com/GilLevi/AgeGenderDeepLearning)
+Recognize gender by face. This sample is based on [Age- Gender- recognition networks](https://github.com/GilLevi/AgeGenderDeepLearning)
 
 * Download and install Android Studio
 
@@ -106,8 +108,6 @@ to one chosen during project creation. There is one entry in each file.
 * Download files
   1. [Face detection .caffemodel](https://github.com/opencv/opencv_3rdparty/raw/19512576c112aa2c7b6328cb0e8d589a4a90a26d/res10_300x300_ssd_iter_140000_fp16.caffemodel)
   1. [Face detection .prototxt](https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy.prototxt)
-  1. [AgeNet .caffemodel](https://github.com/GilLevi/AgeGenderDeepLearning/raw/master/models/age_net.caffemodel)
-  1. [AgeNet .prototxt](https://github.com/GilLevi/AgeGenderDeepLearning/blob/master/age_net_definitions/deploy.prototxt)
   1. [GenderNet .caffemodel](https://github.com/GilLevi/AgeGenderDeepLearning/raw/master/models/gender_net.caffemodel)
   1. [GenderNet .prototxt](https://github.com/GilLevi/AgeGenderDeepLearning/blob/master/gender_net_definitions/deploy.prototxt)
 
