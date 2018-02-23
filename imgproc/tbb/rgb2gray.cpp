@@ -15,12 +15,14 @@ void rgb2gray(const uint8_t* src, uint8_t* dst, int height, int width)
             uint16_t red, green, blue;
             int begin = r.begin();
             int end = r.end();
+            const uint8_t* __restrict__ srcData = src;
+            uint8_t* __restrict__ dstData = dst;
             for (int i = begin; i < end; ++i)
             {
-                red = src[i * 3];
-                green = src[i * 3 + 1];
-                blue = src[i * 3 + 2];
-                dst[i] = (R2GRAY * red + G2GRAY * green + B2GRAY * blue) >> 8;
+                red = srcData[i * 3];
+                green = srcData[i * 3 + 1];
+                blue = srcData[i * 3 + 2];
+                dstData[i] = (R2GRAY * red + G2GRAY * green + B2GRAY * blue) >> 8;
             }
         }
     );

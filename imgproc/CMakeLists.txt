@@ -16,3 +16,5 @@ foreach(backend tbb halide opencv)
     imgproc_${backend}
   )
 endforeach()
+
+add_subdirectory(halide_samples)
