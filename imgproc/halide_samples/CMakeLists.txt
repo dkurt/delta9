@@ -6,9 +6,11 @@ file(GLOB_RECURSE sources "*.cpp")
 
 include_directories(
   "/home/dkurtaev/opencv/build/include"
+  "/home/dkurtaev/Halide/build/include"
 )
 link_directories(
   "/home/dkurtaev/opencv/build/lib"
+  "/home/dkurtaev/Halide/build/lib"
 )
 
 foreach(file ${sources})
@@ -16,6 +18,7 @@ foreach(file ${sources})
 
   add_executable(sample_${name} ${file})
   target_link_libraries(sample_${name}
+    Halide
     imgproc_halide
     opencv_core
     opencv_highgui
