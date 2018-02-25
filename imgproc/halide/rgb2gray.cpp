@@ -18,11 +18,10 @@ void rgb2gray(const uint8_t* src, uint8_t* dst, int height, int width)
         Halide::Expr g = Halide::cast<uint16_t>(input(x, y, 1));
         Halide::Expr b = Halide::cast<uint16_t>(input(x, y, 2));
         f(x, y) = Halide::cast<uint8_t>((R2GRAY * r + G2GRAY * g + B2GRAY * b) >> 8);
-        f.bound(x, 0, width).bound(y, 0, height);
 
         Halide::Var yo("yo"), yi("yi");
-        f.split(y, yo, yi, 64)
-         .reorder(x, yi, yo)
+        f.bound(x, 0, width).bound(y, 0, height)
+         .split(y, yo, yi, 64)
          .parallel(yo)
          .vectorize(x, 8);
 

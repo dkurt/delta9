@@ -21,12 +21,11 @@ void boxFilter3x3(const uint8_t* src, uint8_t* dst, int height, int width)
         float ratio = 1.0f / 9;
         f(x, y, c) = Halide::cast<uint8_t>(s * ratio);
 
-        f.estimate(x, 0, width).estimate(y, 0, height).estimate(c, 0, 3);
-
         f.output_buffer().dim(0).set_stride(3).set_bounds(0, width);
         f.output_buffer().dim(1).set_stride(3 * width).set_bounds(0, height);
         f.output_buffer().dim(2).set_stride(1).set_bounds(0, 3);
 
+        f.estimate(x, 0, width).estimate(y, 0, height).estimate(c, 0, 3);
         Halide::Pipeline(f).auto_schedule(Halide::get_host_target());
 
         f.print_loop_nest();
